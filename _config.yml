@@ -24,6 +24,8 @@ description: Personal archive of my journey in AI.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
 url: 'https://deepthinkjo.github.io'
 
+favicon: /assets/img/favicons/favicon.png
+
 github:
   username: DeepThinkJo
 
