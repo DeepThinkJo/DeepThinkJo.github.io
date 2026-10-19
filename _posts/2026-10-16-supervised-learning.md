@@ -138,7 +138,7 @@ Probability and Statistics는 데이터의 uncertainty를 이해하고, input과
 
 앞서 살펴본 supervised learning의 workflow를 수학으로 정식화해보자.
 
-1. Data Collection
+### 5-1. Data Collection
 주어진 dataset은 $m$개의 input과 output의 쌍으로 이루어져 있다.
 
 $$
@@ -148,13 +148,13 @@ $$
 주로 dataset은 하나의 example을 하나의 row로 갖는 table 형식을 취한다.
 이때 $\mathbf{x}^{(i)} \in \mathbb{R}^n, \, \mathbf{y}^{(i)} \in \mathbb{R}^{n'}, \, i=1,\ldots,m$인 경우 $\mathcal{D}$는 $m \times (n+n')$ matrix다.
 
-3. Model Selection
+### 5-2. Model Selection
 $\mathcal{D}$의 input과 target value 사이의 관계를 모델링하는 함수를 $h_\theta(x)$라 하자. 여기서 $x$는 input을, $\theta$는 parameter를 나타낸다.
 
-4. Loss Function Design
+### 5-3. Loss Function Design
 Dataset $\mathcal{D}$에 대해 정의한 loss function을 $J(\theta)$라고 하자. 이때 $h_\theta(x)$에서 $x$는 입력 변수지만, $J(\theta)$를 계산할 때는 각 example의 input과 target value가 고정되어 있다. 따라서 loss function을 최소화하는 과정에서는 parameter $\theta$를 조정한다.
 
-5. Optimization
+### 5-4. Optimization
 목적은 최적의 hypothesis function을 찾는 것인데, model selection에서 function의 틀은 정해졌으므로, 그 목적은 최적의 parameter $\theta^{\ast}$를 찾는 것과 동치이다.
 
 $$
@@ -164,5 +164,5 @@ $$
 위의 $\theta^*$를 찾기 위해 선택한 optimization algorithm을 사용한다.
 실제로는 optimal parameter를 해석적으로 구하기 어려운 경우가 많으므로, 선택한 optimization algorithm을 이용해 그 값을 근사적으로 찾는다.
 
-5. Evaluation and Generalization
+### 5-5. Evaluation and Generalization
 최종적으로 학습과 model selection에 사용하지 않은 test dataset $\mathcal{D}_{\text{test}}$을 이용해 모델의 일반적인 성능을 평가할 수 있다. 이때 평가 지표는 문제의 유형에 따라 accuracy, precision, recall 등으로 달라질 수 있다.
