@@ -147,7 +147,7 @@ $$
 h_{\theta}(x) = 28859.526193 + 8731.941047x
 $$
 
-아래는 2번 과정에서 100번째 iteration까지 parameter가 업데이트됨에 따라 fitting된 hypothesis function을 보여준다.
+아래는 2번 과정에서 10번째 iteration까지 parameter가 업데이트됨에 따라 fitting된 hypothesis function을 보여준다.
 
 ![Linear Regression Fitting Process](/assets/img/fitting_linreg.gif)
 
