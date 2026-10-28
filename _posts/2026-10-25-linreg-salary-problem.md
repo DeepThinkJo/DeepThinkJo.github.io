@@ -26,7 +26,7 @@ CSV는 Comma-Separated Values의 약자로, 데이터를 쉼표로 구분하여 
 
 아래는 이 dataset의 각 data sample을 2D-plane에 plot한 이미지이다.
 
-![Salary vs Experience Plot](/assets/img/salary_vs_experience.png)
+![Salary vs Experience Plot](/assets/img/2026-10-25/dataset_plot.png)
 
 Linear regression 모델은 input feature의 coefficient 뿐만 아니라 bias term도 parameter로 갖는다. 이를 matrix operation으로 통일해 표현하기 위해, input feature의 왼쪽에 모든 element가 1인 column을 추가하여 design matrix를 구성한다.
 
@@ -149,7 +149,7 @@ $$
 
 아래는 2번 과정에서 10번째 iteration까지 parameter가 업데이트됨에 따라 fitting된 hypothesis function을 보여준다.
 
-![Linear Regression Fitting Process](/assets/img/fitting_linreg.gif)
+![Linear Regression Fitting Process](/assets/img/2026-10-25/line_fitting.gif)
 
 ## 4. Least Squares Method
 
