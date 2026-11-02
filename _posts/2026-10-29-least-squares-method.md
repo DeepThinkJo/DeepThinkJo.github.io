@@ -293,7 +293,7 @@ $$
 \exists \mathbf{x} \, \text{such that} \, A^TA\mathbf{x} = A^T\mathbf{b}
 $$
 
-이는 임의의 vector $\mathbf{b} \in \mathbb{R}^m$에 대해 $A^T\mathbf{b}$ 항상 $\operatorname{Col}(A^TA)$의 원소라는 뜻이다.
+이는 임의의 vector $\mathbf{b} \in \mathbb{R}^m$에 대해 $A^T\mathbf{b}$는 항상 $\operatorname{Col}(A^TA)$의 원소라는 뜻이다.
 
 이를 보이려면 먼저 $\operatorname{Col}(A^TA)=\operatorname{Col}(A^T)$임을 보여야 한다. 이때 $A^T\mathbf{b} \in \operatorname{Col}(A^T)$이므로, 두 column space가 같다는 사실을 이용하면 $A^T\mathbf{b} \in \operatorname{Col}(A^TA)$임을 알 수 있다.
 
