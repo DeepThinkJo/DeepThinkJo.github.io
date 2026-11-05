@@ -1,8 +1,8 @@
 ---
-title: "ML in Details - Linear Regression Solving Salary Problem"
+title: "ML Practice - Salary Prediction with Linear Regression"
 date: 2026-10-25
-categories: [ML, Supervised Learning]
-tags: [AI, ML, supervised-learning, linear-regression, practice]
+categories: [Machine Learning, Practice]
+tags: [AI, ML, supervised-learning, linear-regression]
 math: true
 ---
 
@@ -70,19 +70,19 @@ $$
 
 본격적으로 문제를 해결하기 전, 표기를 확립하자.
 
-| Notation | Meanings |
-| --- | --- |
-| $m$ | example의 개수 (이 문제에서 $m=35$) |
-| $n$ | feature의 개수 (이 문제에서 $n=1$) |
-| $x^{(i)} \in \mathbb{R}$ | input of example $i$ |
-| $y^{(i)} \in \mathbb{R}$ | target value of example $i$ |
-| $\hat{y}^{(i)} \in \mathbb{R}$ | example $i$에 대한 model의 prediction |
-| $X \in \mathbb{R}^{m \times (n+1)}$ | design matrix $(X_{i,:}=\begin{bmatrix}1 & x_1^{(i)} & \cdots & x_n^{(i)}\end{bmatrix})$ |
-| $\mathbf{y}=\begin{bmatrix}y^{(1)} & \cdots & y^{(m)}\end{bmatrix}^T \in \mathbb{R}^{m}$ | target vector |
-| $\mathbf{\hat{y}}=\begin{bmatrix}\hat{y}^{(1)} & \cdots & \hat{y}^{(m)}\end{bmatrix}^T \in \mathbb{R}^{m}$ | prediction vector |
-| $\mathbf{\theta}=\begin{bmatrix}\theta_0 & \theta_1 & \cdots & \theta_n \end{bmatrix}^T \in \mathbb{R}^{n+1}$ | parameter |
-| $h_\theta(x)$ | hypothesis function $(y^{(i)}=h_\theta(x^{(i)}))$ |
-| $J(\theta)$ | loss function |
+| Notation                                                                                                      | Meanings                                                                                 |
+| ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| $m$                                                                                                           | example의 개수 (이 문제에서 $m=35$)                                                      |
+| $n$                                                                                                           | feature의 개수 (이 문제에서 $n=1$)                                                       |
+| $x^{(i)} \in \mathbb{R}$                                                                                      | input of example $i$                                                                     |
+| $y^{(i)} \in \mathbb{R}$                                                                                      | target value of example $i$                                                              |
+| $\hat{y}^{(i)} \in \mathbb{R}$                                                                                | example $i$에 대한 model의 prediction                                                    |
+| $X \in \mathbb{R}^{m \times (n+1)}$                                                                           | design matrix $(X_{i,:}=\begin{bmatrix}1 & x_1^{(i)} & \cdots & x_n^{(i)}\end{bmatrix})$ |
+| $\mathbf{y}=\begin{bmatrix}y^{(1)} & \cdots & y^{(m)}\end{bmatrix}^T \in \mathbb{R}^{m}$                      | target vector                                                                            |
+| $\mathbf{\hat{y}}=\begin{bmatrix}\hat{y}^{(1)} & \cdots & \hat{y}^{(m)}\end{bmatrix}^T \in \mathbb{R}^{m}$    | prediction vector                                                                        |
+| $\mathbf{\theta}=\begin{bmatrix}\theta_0 & \theta_1 & \cdots & \theta_n \end{bmatrix}^T \in \mathbb{R}^{n+1}$ | parameter                                                                                |
+| $h_\theta(x)$                                                                                                 | hypothesis function $(y^{(i)}=h_\theta(x^{(i)}))$                                        |
+| $J(\theta)$                                                                                                   | loss function                                                                            |
 
 ## 3. Batch Gradient Descent
 

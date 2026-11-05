@@ -1,12 +1,12 @@
 ---
-title: "ML in Details - Supervised Learning"
+title: "ML Theory - Supervised Learning"
 date: 2026-10-15
-categories: [ML, Supervised Learning]
+categories: [Machine Learning, Theory]
 tags: [AI, ML, supervised-learning]
 math: true
 ---
 
-## 지도학습(Supervised Learning)
+## Supervised Learning
 
 Supervised learning은 machine learning에서 가장 널리 사용되는 학습 방식 중 하나이다.
 
@@ -17,7 +17,7 @@ Supervised learnin은 input과 target value의 쌍으로 구성된 dataset을 �
 
 어떤 뜻인지 아래에서 자세히 알아보자.
 
-## 1. Supervised Learning의 목적
+## 1. Goal of Supervised Learning
 
 Supervised learning의 목적은 주어진 dataset에서 input과 output 사이의 관계를 학습하고, 새로운 input에 대해서도 정확한 output을 예측할 수 있는 model을 만드는 것이다.
 
@@ -43,7 +43,7 @@ $$
 
 따라서 중요한 것은 주어진 data의 정답을 그대로 재현하는 것이 아니라, 데이터에 내재한 일반적인 패턴을 학습하는 것이다.
 
-## 2. Supervised Learning의 종류
+## 2. Types of Supervised Learning
 
 Supervised learning은 output의 종류에 따라
 
@@ -55,7 +55,7 @@ Regression의 경우, hypothesis가 예측하는 output은 continuous value이�
 
 예를 들어, 사람의 키를 통해 몸무게를 예측하는 model은 regression model에 해당하며, 사람의 혈당 수치를 통해 당뇨병 여부를 예측하는 model은 classification model에 해당한다.
 
-## 3. Supervised Learning의 Workflow
+## 3. Workflow of Supervised Learning
 
 이러한 목적을 달성하기 위해 supervised learning은 일반적으로 다음과 같은 단계로 진행된다.
 
@@ -130,9 +130,10 @@ Machine learning을 공부하기 위해 필요한 수학 선수과목들은 다�
 3. Probability and Statistics
 
 각각 왜 필요한지 간단하게 설명하겠다.
-Real-world problem은 주로 여러 요인을 포함한다. Linear algebra에 등장하는 vector와 matrix 등의 개념은 데이터를 구조적으로 표현하고, model의 계산을 간결하게 나타내는 데 유용하다. 또한 matrix operation은 현대 컴퓨터의 효율적인 병렬 계산과도 잘 맞는다.
-Optimization은 target function을 최소화하거나 최대화하는 문제다. 많은 ML model에서는 미분을 이용해 함수가 변하는 방향과 정도를 파악하고, 이를 바탕으로 parameter를 조정한다. 따라서 calculus는 특히 gradient-based optimization을 이해하는 데 중요하다.
-Probability and Statistics는 데이터의 uncertainty를 이해하고, input과 target value 사이의 관계를 통계적으로 모델링하는 데 중요하다. 또한 통계적 관점은 model의 일반화 성능을 분석하고 평가하는 데에도 활용된다.
+
+1. Real-world problem은 주로 여러 요인을 포함한다. Linear algebra에 등장하는 vector와 matrix 등의 개념은 데이터를 구조적으로 표현하고, model의 계산을 간결하게 나타내는 데 유용하다. 또한 matrix operation은 현대 컴퓨터의 효율적인 병렬 계산과도 잘 맞는다.
+2. Optimization은 target function을 최소화하거나 최대화하는 문제다. 많은 ML model에서는 미분을 이용해 함수가 변하는 방향과 정도를 파악하고, 이를 바탕으로 parameter를 조정한다. 따라서 calculus는 특히 gradient-based optimization을 이해하는 데 중요하다.
+3. Probability and Statistics는 데이터의 uncertainty를 이해하고, input과 target value 사이의 관계를 통계적으로 모델링하는 데 중요하다. 또한 통계적 관점은 model의 일반화 성능을 분석하고 평가하는 데에도 활용된다.
 
 ## 5. Mathematical Details
 
