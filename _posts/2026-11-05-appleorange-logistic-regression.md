@@ -22,7 +22,7 @@ Weight와 Size column은 수치형 데이터로 이뤄져있고, Class column은
 
 아래는 이 dataset의 각 data sample을 2D plane에 plot한 이미지이다.
 
-![Apples and Oranges Plot](/assets/img/2026-10-28/dataset_plot.png)
+![Apples and Oranges Plot](/assets/img/2026-11-05/data_scatter.png)
 
 이 dataset을 활용하여 logistic regression model을 training하기 위한 사전 작업을 해야 한다.
 
@@ -60,11 +60,11 @@ $$
 $$
 \mathbf{y} =
 \begin{bmatrix} y^{(1)} & y^{(2)} & \cdots & y^{(40)} \end{bmatrix}^T
-\, \text{where} \,
+\quad \text{where} \quad
 y^{(i)} =
 \begin{cases}
-1, & \text{if } y^{(i)}_{\text{original}}=\text{apple},\\
-0, & \text{otherwise.} \\
+1, & \text{if} \quad y^{(i)}_{\text{original}}=\text{apple},\\
+0, & \text{otherwise.}
 \end{cases}
 $$
 
@@ -134,7 +134,7 @@ Gradient descent algorithm은 다음과 같이 진행된다.
 
 아래에서는 2번 과정을 자세히 서술한다.
 
-먼저 learning rate $\alpha$는 관습에 따라 0.01로 놓는다.
+먼저 learning rate $\alpha$는 관습에 따라 0.01로 놓는다. (항상 0.01로 설정하라는 뜻은 아니다. 이 문제의 경우 learning rate와 관련된 또 다른 문제가 발생하는데, 이는 추후 다루겠다.)
 
 아래는 loss function의 parameter $\theta$의 $j$번째 성분$(j=0,1,2)$에 대한 gradient를 구하는 과정이다.
 
@@ -223,7 +223,7 @@ $$
 2번 과정을 learning rate $\alpha=0.01$에 대해 1000000번 수행하면 다음과 같이 업데이트된 parameter를 얻는다.
 
 $$
-\theta_0=-45.95134005,\,\theta_1=-0.22100812, \, \theta_2=12.46160506
+\theta_0=-45.95134005,\quad\theta_1=-0.22100812, \quad \theta_2=12.46160506
 $$
 
 즉, 업데이트된 parameter를 반영한 hypothesis function은 아래와 같다.
@@ -241,7 +241,7 @@ $$
 $$
 \hat{y}_{\text{class}} = 
 \begin{cases}
-\text{apple}  & \text{, if } h_{\theta}(\mathbf{x}) \ge 0.5, \\
+\text{apple}  & \text{, if} \quad h_{\theta}(\mathbf{x}) \ge 0.5, \\
 \text{orange} & \text{, otherwise.}
 \end{cases}
 $$
@@ -255,9 +255,13 @@ $$
 \theta_0+\theta_1x_1+\theta_2x_2=0
 $$
 
-아래는 2번 과정에서 parameter가 1000번씩 업데이트될 때마다 decision boundary가 어떻게 fitting되는지 보여주는 애니메이션이다.
+아래는 2번 과정에서 parameter가 업데이트됨에 따라 decision boundary가 어떻게 fitting되는지 보여주는 애니메이션이다.
 
-![Fitting Decision Boundary](/assets/img/2026-10-28/boundary_fitting_without_scaling.gif)
+![Fitting Decision Boundary](/assets/img/2026-11-05/boundary_fitting.gif)
+
+또한 아래는 training에 따른 loss의 변화를 보이는 loss curve이다.
+
+![Loss Curve](/assets/img/2026-11-05/loss_history.png)
 
 ## 4. Feature Scaling
 
@@ -287,14 +291,14 @@ Feature scaling을 적용했을 때는 1만번의 parameter update만으로 적�
 이 경우 얻은 parameter는 아래와 같다.
 
 $$
-
+\theta_0=-0.39211124, \quad \theta_1=2.80167033, \quad \theta_2=3.47616205
 $$
 
 Feature scaling을 적용하여 parameter를 update함에 따라 decision boundary가 fitting되는 과정을 아래의 애니메이션으로 보인다.
 
+![Fitting Decision Boundary (Feature Scaling Applied)](/assets/img/2026-11-05/boundary_fitting_scaled.gif)
 
-
-이때 그래프 상 찍혀있는 점들은 각각 원본 dataset의 example이다. 따라서 standardization에 의해 조정된 feature에 대해 fitting된 parameter들을 원본 feature에 맞게 역조정해야 한다. 조정된 feature에 대한 parameter를 $\tilde{\theta} = \begin{bmatrix}\tilde{\theta}_0 & \tilde{\theta}_1 & \tilde{\theta}_2\end{bmatrix}$라 하면, 원본 feature에 대한 decision boundary를 구하는 과정은 다음과 같다.
+이때 그래프 상 찍혀있는 점들은 각각 원본 dataset의 example이다. 따라서 standardization에 의해 조정된 feature에 대해 fitting된 parameter들을 원본 feature에 맞게 역조정해야 한다. 조정된 feature에 대한 parameter를 $\tilde{\theta} = \begin{bmatrix}\tilde{\theta}_0 & \tilde{\theta}_1 & \tilde{\theta}_2\end{bmatrix}^T$라 하면, 원본 feature에 대한 decision boundary를 구하는 과정은 다음과 같다.
 
 $$
 \begin{align}
@@ -306,3 +310,7 @@ $$
 $$
 
 이때 decision boundary는 $(\tilde{\theta}_0-\frac{\tilde{\theta}_1\mu_1}{\sigma_1}-\frac{\tilde{\theta}_2\mu_2}{\sigma_2}) + \frac{\tilde{\theta}_1}{\sigma_1}x_1 + \frac{\tilde{\theta}_2}{\sigma_2}x_2=0$을 만족하는 점 $(x_1, x_2)$의 집합이다.
+
+또한 아래는 feature scaling을 적용했을 때의 loss curve이다.
+
+![Loss Curve (Feature Scaling Applied)](/assets/img/2026-11-05/loss_history_scaled.png)
