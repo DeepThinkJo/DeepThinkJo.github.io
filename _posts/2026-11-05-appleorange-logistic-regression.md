@@ -265,7 +265,7 @@ $$
 
 ## 4. Feature Scaling
 
-Linear regression practice에서 좋은 parameter를 찾기 위해 1만번의 update 정도면 충분했던 것과 달리 이 문제에서는 1백만번의 update가 필요했다. 위의 애니메이션을 보면 1백만번의 학습 이후에도 decision boundary의 기울기가 양수라서 필자는 만족하지 못했다.
+Linear regression practice에서 좋은 parameter를 찾기 위해 1만번의 update 정도면 충분했던 것과 달리 이 문제에서는 1백만번의 update가 필요했다. 위 애니메이션과 이미지를 보면, decision boundary가 training 과정에서 '부드럽게' 이동하는 게 아닌, 불안정하게 '뚝뚝' 끊기며 순간이동한다. 뿐만 아니라, loss curve가 training 초기에는 급격히 상승하는 모습도 보였다.
 
 Update 횟수를 무작정 늘리는 것이 아닌 새로운 해결책이 필요하다.
 바로 **Feature Scaling**이다.
@@ -278,9 +278,11 @@ Feature scaling은 각 feature의 값의 범위를 조정하여 feature 간 수�
 Standardization 방법에 따르면 $\mathbf{x}^{(i)}$를 $\tilde{\mathbf{x}}^{(i)}$로 변환하는 과정은 다음과 같다.
 
 $$
-\mu_j = \frac{1}{m} \sum_{i=1}^m x_j^{(i)}, \quad
-\sigma_j = \sqrt{\frac{1}{m} \sum_{i=1}^m (x_j^{(i)}-\mu_j)^2} \\
-\tilde{x}_j^{(i)} = \frac{x_j^{(i)} - \mu_j}{\sigma_j}
+\begin{align}
+    \mu_j &= \frac{1}{m} \sum_{i=1}^m x_j^{(i)}, \\
+    \sigma_j &= \sqrt{\frac{1}{m} \sum_{i=1}^m (x_j^{(i)}-\mu_j)^2} \\
+    \tilde{x}_j^{(i)} &= \frac{x_j^{(i)} - \mu_j}{\sigma_j}
+\end{align}
 $$
 
 이때 $j=0$인 경우는 제외한다. Bias를 다루기 위해 추가한 dummy feature인 $1$마저 standardization으로 조정한다면, 모두 $0$이 된다.
@@ -314,3 +316,78 @@ $$
 또한 아래는 feature scaling을 적용했을 때의 loss curve이다.
 
 ![Loss Curve (Feature Scaling Applied)](/assets/img/2026-11-05/loss_history_scaled.png)
+
+## 5. Why Feature Scaling Matters?
+
+Feature scaling을 적용한 경우 1만번의 parameter update를 통해 loss를 약 0.02까지 감소시킬 수 있었다.
+반면 feature scaling을 적용하지 않은 경우 1백만번의 수행을 통해 loss를 약 0.05까지 감소시켰다.
+
+100배 더 연산한 결과가 오로지 feature scaling이 적용되지 않았다는 이유로 더 좋지 못했다.
+이처럼 feature scaling은 이 문제에서 매우 critical하게 작용했음을 알 수 있다.
+
+그 이유에 대해 알아보자.
+
+아래는 'apples_and_oranges.csv' dataset 상에서 두 feature 'Weight' $(x_1^{(i)})$와 'Size' $(x_2^{(i)})$ 각각의 range이다.
+
+$$
+65.0 \le x_1^{(i)} \le 75.0, \quad 4.01 \le x_2^{(i)} \le 5.85 \quad \text{for} \quad i=1,\ldots,m
+$$
+
+Dataset의 첫 번째 sample,
+
+$$
+x_1^{(1)}=69, \quad x_2^{(1)}=4.39, \quad y_{\text{original}}^{(1)}=\text{orange}
+$$
+
+에 대해 parameter를 gradient descent로 학습한다고 해보자.
+
+$$
+\theta_1 \leftarrow
+\theta_1 - \alpha \frac{\partial}{\partial \theta_1} J(\theta), \quad
+\theta_2 \leftarrow
+\theta_2 - \alpha \frac{\partial}{\partial \theta_2} J(\theta)
+$$
+
+이때 첫 번째 sample에 대한 loss function $J^{(1)}$의 $\theta_1$, $\theta_2$에 대한 각각의 partial derivative는 다음과 같다.
+
+$$
+\frac{\partial}{\partial \theta_1}J^{(1)}(\theta) =
+(\hat{y}^{(1)}-y^{(1)})x_1^{(1)}, \quad
+\frac{\partial}{\partial \theta_2}J^{(1)}(\theta) =
+(\hat{y}^{(1)}-y^{(1)})x_2^{(1)}
+$$
+
+위의 각 partial derivative에 첫 번째 sample의 feature 값을 대입하면,
+
+$$
+\frac{\partial}{\partial \theta_1}J^{(1)}(\theta) =
+69(\hat{y}^{(1)}-y^{(1)}), \quad
+\frac{\partial}{\partial \theta_2}J^{(1)}(\theta) =
+4.39(\hat{y}^{(1)}-y^{(1)})
+$$
+
+즉, feature 간 scale의 차이가 각 parameter가 update되는 정도에 기여한다는 뜻이다.
+
+이때 $\frac{\partial J^{(1)}}{\partial \theta_1}$와 $\frac{\partial J^{(1)}}{\partial \theta_2}$의 크기를 비교해보자.
+
+$$
+\mid \frac{\partial J^{(1)}}{\partial \theta_1} \mid \gg
+\mid \frac{\partial J^{(1)}}{\partial \theta_2} \mid
+$$
+
+$\theta_1$과 $\theta_2$의 값을 바꾸면서 loss function의 value를 같은 양만큼 변화시킬 때 필요한 $\theta_1$의 변화량이 $\theta_2$의 것보다 훨씬 작다는 뜻이다.
+
+이를 반영하여 같은 loss값을 이루는 점 $(\theta_1, \theta_2)$의 집합을 contour line으로 표현하면, contour line은 길고 좁은 ellipse의 형태를 가지며, $\theta_2$ axis 방향으로 길 것이다.
+
+이때 gradient의 성질 중 하나는, gradient vector를 contour line이 그려진 $\theta_1\theta_2$ plane으로 사영하면, gradient는 contour line과 수직이라는 것이다.
+
+따라서 gradient descent algorithm을 활용했을 때, contour line이 길고 좁을수록, gradient는 ellipse의 중심, 즉 global minimum을 향하지 않을 가능성이 높다. 이 경우에서는, $\theta_1$ axis 방향에서 크게 진동하고, $\theta_2$ axis 방향으로는 천천히 움직일 가능성이 크다는 뜻이다. 이러한 진동 양상으로 인해 global minimum을 향한 수렴 속도가 느려질 수 있다.
+
+수학적으로 feature 간 scale 차이가 gradient-based optimization algorithm에 악영향을 끼치는 이유를 엄밀하게 설명해보겠다.
+
+먼저 Hessian에 대해 알 필요가 있다. 어떤 multivariate scalar-valued function $f:\R^n \rightarrow \R$에 대한 Hessian은 다음과 같이 정의된다.
+
+$$
+\nabla^2 f(\mathbf{x})_{ij}=\frac{\partial^2 f}{\partial x_i \partial x_j}, \quad \nabla^2 f(\mathbf{x}) \in \R^{n \times n}
+$$
+
