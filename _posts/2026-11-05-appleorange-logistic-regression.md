@@ -381,8 +381,8 @@ $$
 
 <figure>
   <img 
-    src="/assets/img/2026-11-05/figure_1_contour.png" width="100%">
-    alt="Contour Lines of the loss function in the parameter space"
+    src="/assets/img/2026-11-05/figure_1_contour.png" width="100%"
+    alt="Contour Lines of the loss function in the parameter space">
   <figcaption>
     Figure 5.1. Contour lines of the loss function in the parameter space.
   </figcaption>
@@ -396,8 +396,9 @@ $$
 
 <figure>
   <img 
-    src="/assets/img/2026-11-05/figure_2_gradient.png" width="100%">
-    alt="The gradient vector is perpendicular to the tangent of the contour line at a given point"
+    src="/assets/img/2026-11-05/figure_2_gradient.png"
+    width="100%"
+    alt="The gradient vector is perpendicular to the tangent of the contour line at a given point">
   <figcaption>
     Figure 5.2. The gradient vector is perpendicular to the tangent
     of the contour line at a given point.
@@ -408,8 +409,9 @@ $$
 
 <figure>
   <img
-    src="/assets/img/2026-11-05/figure_3_large_lr.png" width="100%">
-    alt="Gradient descent with a large learning rate"
+    src="/assets/img/2026-11-05/figure_3_large_lr.png"
+    width="100%"
+    alt="Gradient descent with a large learning rate">
   <figcaption>
     Figure 5.3. Gradient Descent with a large learning rate,
     resulting in divergence.
@@ -422,8 +424,9 @@ $$
 
 <figure>
   <img
-    src="/assets/img/2026-11-05/figure_4_small_lr.png" width="100%">
-    alt="Gradient Descent with a small learning rate"
+    src="/assets/img/2026-11-05/figure_4_small_lr.png"
+    width="100%"
+    alt="Gradient Descent with a small learning rate">
   <figcaption>
     Figure 5.4. Gradient Descent with a small learning rate,
     resulting in slow convergence.
