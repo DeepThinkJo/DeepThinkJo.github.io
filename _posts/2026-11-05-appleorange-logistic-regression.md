@@ -380,7 +380,9 @@ $$
 이를 이해하기 위해 parameter에서 동일한 loss value를 갖는 지점들을 연결한 contour line을 살펴보자.
 
 <figure>
-  <img src="/assets/img/2026-11-05/figure_1_contour.png" width="100%">
+  <img 
+    src="/assets/img/2026-11-05/figure_1_contour.png" width="100%">
+    alt="Contour Lines of the loss function in the parameter space"
   <figcaption>
     Figure 5.1. Contour lines of the loss function in the parameter space.
   </figcaption>
@@ -393,7 +395,9 @@ $$
 이때 gradient는 contour line에 수직인 방향을 가리킨다.
 
 <figure>
-  <img src="/assets/img/2026-11-05/figure_2_gradient.png" width="100%">
+  <img 
+    src="/assets/img/2026-11-05/figure_2_gradient.png" width="100%">
+    alt="The gradient vector is perpendicular to the tangent of the contour line at a given point"
   <figcaption>
     Figure 5.2. The gradient vector is perpendicular to the tangent
     of the contour line at a given point.
@@ -403,7 +407,9 @@ $$
 따라서 Gradient Descent는 길고 좁은 contour에서 minimum을 향해 이동하는 과정에서 한 방향으로 크게 움직이다가 반대편으로 넘어가는 현상을 반복할 수 있다.
 
 <figure>
-  <img src="/assets/img/2026-11-05/figure_3_large_lr.png" width="100%">
+  <img
+    src="/assets/img/2026-11-05/figure_3_large_lr.png" width="100%">
+    alt="Gradient descent with a large learning rate"
   <figcaption>
     Figure 5.3. Gradient Descent with a large learning rate,
     resulting in divergence.
@@ -415,7 +421,9 @@ $$
 결과적으로 minimum에 도달하기까지 더 많은 parameter update가 필요해질 수 있다.
 
 <figure>
-  <img src="/assets/img/2026-11-05/figure_4_small_lr.png" width="100%">
+  <img
+    src="/assets/img/2026-11-05/figure_4_small_lr.png" width="100%">
+    alt="Gradient Descent with a small learning rate"
   <figcaption>
     Figure 5.4. Gradient Descent with a small learning rate,
     resulting in slow convergence.
