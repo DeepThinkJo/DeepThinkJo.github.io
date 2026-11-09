@@ -22,7 +22,15 @@ Weight와 Size column은 수치형 데이터로 이뤄져있고, Class column은
 
 아래는 이 dataset의 각 data sample을 2D plane에 plot한 이미지이다.
 
-![Apples and Oranges Plot](/assets/img/2026-11-05/data_scatter.png)
+<figure>
+  <img
+    src="/assets/img/2026-11-05/fig1_1.png"
+    alt="Scatter plot showing apples and oranges distributed according to their weight and size."
+  >
+  <figcaption>
+    Figure 1.1. Distribution of apples and oranges based on weight and size.
+  </figcaption>
+</figure>
 
 이 dataset을 활용하여 logistic regression model을 training하기 위한 사전 작업을 해야 한다.
 
@@ -257,11 +265,27 @@ $$
 
 아래는 2번 과정에서 parameter가 업데이트됨에 따라 decision boundary가 어떻게 fitting되는지 보여주는 애니메이션이다.
 
-![Fitting Decision Boundary](/assets/img/2026-11-05/boundary_fitting.gif)
+<figure>
+  <img
+    src="/assets/img/2026-11-05/fig3_1.gif"
+    alt="Animation showing the decision boundary changing during Logistic Regression training without feature scaling."
+  >
+  <figcaption>
+    Figure 3.2. Decision boundary fitting process using Logistic Regression without feature scaling.
+  </figcaption>
+</figure>
 
 또한 아래는 training에 따른 loss의 변화를 보이는 loss curve이다.
 
-![Loss Curve](/assets/img/2026-11-05/loss_history.png)
+<figure>
+  <img
+    src="/assets/img/2026-11-05/fig3_2.png"
+    alt="Loss curve showing the change in prediction error during Logistic Regression training without feature scaling."
+  >
+  <figcaption>
+    Figure 3.2. Loss history during Logistic Regression training without feature scaling.
+  </figcaption>
+</figure>
 
 ## 4. Feature Scaling
 
@@ -298,7 +322,15 @@ $$
 
 Feature scaling을 적용하여 parameter를 update함에 따라 decision boundary가 fitting되는 과정을 아래의 애니메이션으로 보인다.
 
-![Fitting Decision Boundary (Feature Scaling Applied)](/assets/img/2026-11-05/boundary_fitting_scaled.gif)
+<figure>
+  <img
+    src="/assets/img/2026-11-05/fig4_1.gif"
+    alt="Animation showing the decision boundary changing during Logistic Regression training with feature scaling applied."
+  >
+  <figcaption>
+    Figure 4.1. Decision boundary fitting process using Logistic Regression with feature scaling.
+  </figcaption>
+</figure>
 
 이때 그래프 상 찍혀있는 점들은 각각 원본 dataset의 example이다. 따라서 standardization에 의해 조정된 feature에 대해 fitting된 parameter들을 원본 feature에 맞게 역조정해야 한다. 조정된 feature에 대한 parameter를 $\tilde{\theta} = \begin{bmatrix}\tilde{\theta}_0 & \tilde{\theta}_1 & \tilde{\theta}_2\end{bmatrix}^T$라 하면, 원본 feature에 대한 decision boundary를 구하는 과정은 다음과 같다.
 
@@ -315,7 +347,15 @@ $$
 
 또한 아래는 feature scaling을 적용했을 때의 loss curve이다.
 
-![Loss Curve (Feature Scaling Applied)](/assets/img/2026-11-05/loss_history_scaled.png)
+<figure>
+  <img
+    src="/assets/img/2026-11-05/fig4_2.png"
+    alt="Loss curve showing the change in prediction error during Logistic Regression training with feature scaling applied."
+  >
+  <figcaption>
+    Figure 4.2. Loss history during Logistic Regression training with feature scaling.
+  </figcaption>
+</figure>
 
 ## 5. Why Feature Scaling Matters?
 
@@ -381,7 +421,7 @@ $$
 
 <figure>
   <img 
-    src="/assets/img/2026-11-05/figure_1_contour.png" width="100%"
+    src="/assets/img/2026-11-05/fig5_1.png" width="100%"
     alt="Contour Lines of the loss function in the parameter space">
   <figcaption>
     Figure 5.1. Contour lines of the loss function in the parameter space.
@@ -396,7 +436,7 @@ $$
 
 <figure>
   <img 
-    src="/assets/img/2026-11-05/figure_2_gradient.png"
+    src="/assets/img/2026-11-05/fig5_2.png"
     width="100%"
     alt="The gradient vector is perpendicular to the tangent of the contour line at a given point">
   <figcaption>
@@ -409,7 +449,7 @@ $$
 
 <figure>
   <img
-    src="/assets/img/2026-11-05/figure_3_large_lr.png"
+    src="/assets/img/2026-11-05/fig5_3.png"
     width="100%"
     alt="Gradient descent with a large learning rate">
   <figcaption>
@@ -422,9 +462,11 @@ $$
 
 결과적으로 minimum에 도달하기까지 더 많은 parameter update가 필요해질 수 있다.
 
+짧은 축 방향으로 진동하다가 발산하는 현상을 막기 위해 learning rate를 크게 낮춘 경우 parameter는 figure 5.4와 같이 천천히 움직이게 된다.
+
 <figure>
   <img
-    src="/assets/img/2026-11-05/figure_4_small_lr.png"
+    src="/assets/img/2026-11-05/fig5_4.png"
     width="100%"
     alt="Gradient Descent with a small learning rate">
   <figcaption>

@@ -28,7 +28,7 @@ CSV는 Comma-Separated Values의 약자로, 데이터를 쉼표로 구분하여 
 
 <figure>
   <img
-    src="/assets/img/2026-10-25/figure_1_1_data_scatter.png"
+    src="/assets/img/2026-10-25/fig1_1.png"
     alt="Scatter plot showing the relationship between years of experience and salary."
   >
   <figcaption>
@@ -159,7 +159,7 @@ $$
 
 <figure>
   <img
-    src="/assets/img/2026-10-25/figure_3_1_loss_history.png"
+    src="/assets/img/2026-10-25/fig3_1.png"
     alt="Loss curve showing the decrease in prediction error during Gradient Descent."
   >
   <figcaption>
@@ -171,7 +171,7 @@ $$
 
 <figure>
   <img
-    src="/assets/img/2026-10-25/figure_3_2_fitting_linreg.gif"
+    src="/assets/img/2026-10-25/fig3_2.gif"
     alt="Animation showing the linear regression line fitting the salary data through successive parameter updates."
   >
   <figcaption>
