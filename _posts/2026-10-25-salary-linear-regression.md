@@ -26,7 +26,15 @@ CSV는 Comma-Separated Values의 약자로, 데이터를 쉼표로 구분하여 
 
 아래는 이 dataset의 각 data sample을 2D-plane에 plot한 이미지이다.
 
-![Salary vs Experience Plot](/assets/img/2026-10-25/data_scatter.png)
+<figure>
+  <img
+    src="/assets/img/2026-10-25/figure_1_1_data_scatter.png"
+    alt="Scatter plot showing the relationship between years of experience and salary."
+  >
+  <figcaption>
+    Figure 1.1. Relationship between years of experience and salary.
+  </figcaption>
+</figure>
 
 Linear regression 모델은 input feature의 coefficient 뿐만 아니라 bias term도 parameter로 갖는다. 이를 matrix operation으로 통일해 표현하기 위해, input feature의 왼쪽에 모든 element가 1인 column을 추가하여 design matrix를 구성한다.
 
@@ -149,11 +157,27 @@ $$
 
 아래는 10000번의 parameter updates에 따른 loss의 변화를 나타낸 그래프이다.
 
-![Loss Curve](/assets/img/2026-10-25/loss_history.png)
+<figure>
+  <img
+    src="/assets/img/2026-10-25/figure_3_1_loss_history.png"
+    alt="Loss curve showing the decrease in prediction error during Gradient Descent."
+  >
+  <figcaption>
+    Figure 3.1. Loss history during Gradient Descent.
+  </figcaption>
+</figure>
 
 아래는 2번 과정에서 10번째 iteration까지 parameter가 업데이트됨에 따라 fitting된 hypothesis function을 보여준다.
 
-![Linear Regression Fitting Process](/assets/img/2026-10-25/fitting_linreg.gif)
+<figure>
+  <img
+    src="/assets/img/2026-10-25/figure_3_2_fitting_linreg.gif"
+    alt="Animation showing the linear regression line fitting the salary data through successive parameter updates."
+  >
+  <figcaption>
+    Figure 3.2. Linear Regression fitting process through Gradient Descent.
+  </figcaption>
+</figure>
 
 ## 4. Least Squares Method
 
