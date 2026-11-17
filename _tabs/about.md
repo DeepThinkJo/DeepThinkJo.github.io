@@ -14,6 +14,22 @@ I'm fascinated by how intelligent systems work, how mathematical principles make
 
 My goal is to become a **Machine Learning Engineer and Researcher** who can understand, design, and build the core technologies behind intelligent systems.
 
+## Education
+
+**Sungkyunkwan University (SKKU)**
+B.S. in Software
+Mar. 2025 - Present
+
+**Sejong University (SJU)**
+B.S. in Data Science
+Mar. 2023 - Feb. 2025
+- GPA: 4.32 / 4.50
+
+## Military Service
+
+**Republic of Korea Army**
+Mar. 2025 - Sep. 2026
+
 ## Research Interests
 
 I'm particularly interested in the intersection of machine learning, computer vision, and intelligent systems.
